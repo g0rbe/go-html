@@ -70,9 +70,16 @@ func (d *Document) OuterHTML(selector string) []byte {
 	return []byte(v)
 }
 
-// RemoveSelection removes elements from d Document that matches the selector.
+// RemoveSelection remove the forst element from d Document that match selector.
 func (d *Document) RemoveSelection(selector string) {
 	d.s.Find(selector).Remove()
+}
+
+// RemoveSelections removes elements from d Document that matches any of the selectors.
+func (d *Document) RemoveSelections(selectors []string) {
+	for i := range selectors {
+		d.s.Find(selectors[i]).Remove()
+	}
 }
 
 func (d *Document) Title() []byte {
