@@ -70,7 +70,7 @@ func (d *Document) OuterHTML(selector string) []byte {
 	return []byte(v)
 }
 
-// RemoveSelection remove the forst element from d Document that match selector.
+// RemoveSelection removes elements from d Document that matches the selector.
 func (d *Document) RemoveSelection(selector string) {
 	d.s.Find(selector).Remove()
 }
