@@ -52,7 +52,7 @@ func (d *Document) Attribute(selector, attribute string) []byte {
 //
 // If not found or cant render the HTML, returns nil.
 func (d *Document) InnerHTML(selector string) []byte {
-	v, err := goquery.OuterHtml(d.s.FindMatcher(goquery.Single(selector)))
+	v, err := d.s.FindMatcher(goquery.Single(selector)).Html()
 	if err != nil {
 		return nil
 	}
