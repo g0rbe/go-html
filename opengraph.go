@@ -1,4 +1,4 @@
-package crawler
+package html
 
 type OpenGraph struct {
 	URL         string

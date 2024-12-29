@@ -1,10 +1,10 @@
-package crawler_test
+package html_test
 
 import (
 	"bytes"
 	"testing"
 
-	html "git.gorbe.io/go/crawler"
+	"git.gorbe.io/go/html"
 )
 
 var TestDocument = `<!DOCTYPE html>
