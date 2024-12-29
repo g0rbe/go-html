@@ -48,6 +48,17 @@ func (d *Document) Attribute(selector, attribute string) []byte {
 	return []byte(v)
 }
 
+// HTML returns the HTML of the Document d.
+//
+// If cant render the HTML, returns nil.
+func (d *Document) HTML() []byte {
+	v, err := d.s.Html()
+	if err != nil {
+		return nil
+	}
+	return []byte(v)
+}
+
 // InnerHTML returns the inner HTML of the first element that match selector.
 //
 // If not found or cant render the HTML, returns nil.

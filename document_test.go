@@ -117,3 +117,16 @@ func TestOpenGraph(t *testing.T) {
 	t.Logf("\n%#v\n", *og)
 
 }
+
+func TestDocumentHtml(t *testing.T) {
+
+	d, err := html.ParseDocument([]byte(TestDocument))
+	if err != nil {
+		t.Fatalf("Failed to parse document: %s\n", err)
+	}
+
+	h := d.HTML()
+
+	t.Logf("\n%s\n", h)
+
+}
