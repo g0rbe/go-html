@@ -1,0 +1,22 @@
+name: pkg.go.dev
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  pull-new-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.23.2'
+          check-latest: true
+
+      - name: Create empty Go project
+        run: mkdir newmod && cd newmod && go mod init newmod
+
+      - name: Install dependencies
+        run: cd newmod && go get git.gorbe.io/go/html@${{ gitea.sha }}
+      

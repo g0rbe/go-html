@@ -1,0 +1,11 @@
+name: Go Report Card
+on: [push]
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+     
+      - name: Regenerate Go Report Card
+        run: /usr/bin/wget --quiet -O- --post-data='repo=git.gorbe.io/go/html' 'https://goreportcard.com/checks'
