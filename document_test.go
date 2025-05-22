@@ -2,6 +2,7 @@ package html_test
 
 import (
 	"bytes"
+	"fmt"
 	"testing"
 
 	"git.gorbe.io/go/html"
@@ -64,6 +65,34 @@ func TestDocumentHTML(t *testing.T) {
 
 	v := d.OuterHTML("head meta[property*=\"og:\"][content]")
 	t.Logf("\n%s\n", v)
+}
+
+func ExampleDocument_Attribute() {
+
+	doc := []byte(`
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Test Title</title>
+			<link rel="canonical" href="https://example.com">
+		</head>
+		<body>
+			<h1>Body</h1>
+			<h2>Sub Body</h2>
+		</body>
+	</html>`)
+
+	newDoc, err := html.ParseDocument(doc)
+	if err != nil {
+		// Handle error
+		return
+	}
+
+	href := newDoc.Attribute("link[rel=\"canonical\"]", "href")
+
+	fmt.Printf("%s", href)
+
+	// Output: https://example.com
 }
 
 func TestDocumentTitle(t *testing.T) {
